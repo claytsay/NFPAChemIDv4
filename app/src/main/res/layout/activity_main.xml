@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tsaysoft.nfpachemidv4.com.tsaysoft.nfpachemidv4.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_props"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_header_props"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_props"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView_header_heal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_health"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner_health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/NFPA_numbers"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/textView_header_flam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_flammability"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner_flammability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/NFPA_numbers"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/textView_header_reac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_reactivity"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner_reactivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/NFPA_numbers"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_specs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_header_specs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_specs"
+                android:textSize="30sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_ox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_ox"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_sa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_sa"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_w"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_w"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onSubmit"
+            android:text="@android:string/ok" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

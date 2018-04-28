@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NFPA-ChemID-v4</string>
+
+    <string-array name="NFPA_numbers">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="NFPA_specials">
+        <item>OX</item>
+        <item>SA</item>
+        <item>W</item>
+    </string-array>
+
+    <string name="header_props">Hazard Ratings</string>
+    <string name="header_specs">Special Symbol(s)</string>
+
+    <string name="header_health">Health (blue)</string>
+    <string name="header_flammability">Flammability (red)</string>
+    <string name="header_reactivity">Reactivity (yellow)</string>
+
+    <string name="header_ox">Oxidizer (OX)</string>
+    <string name="header_sa">Simple Asphyxiant (SA)</string>
+    <string name="header_w">Water-Incompatible (W)</string>
+
+</resources>
