@@ -86,6 +86,7 @@ public class IDGManager implements IDGInterface{
         }
 
         // Find the numerical frequencies of the IDs
+        // TODO: (somehow) null-proof this section of the programme
         for(String token : results) {
             if(!idFreqs.containsKey(token)) {
                 idFreqs.put(token, 1);
@@ -96,6 +97,7 @@ public class IDGManager implements IDGInterface{
         }
 
         // Find the ID with the greatest frequency
+        // Maybe make it so that if there is a tie the ID with the greatest frequency is chosen.
         for(String key : idFreqs.keySet()) {
             if(idFreqs.get(key) > maxFreq) {
                 maxFreq = idFreqs.get(key);
@@ -103,12 +105,7 @@ public class IDGManager implements IDGInterface{
             }
         }
 
-        // If there is an ID with greatest frequency, return. If not, randomly choose.
-
-        // TODO: Get this method working
         return maxToken;
-
-
 
     }
 
@@ -116,6 +113,8 @@ public class IDGManager implements IDGInterface{
     // PRIVATE UTILITY METHODS
     // --------------------
 
+    // TODO: Get this class working
+    // You might also want to figure out what it's supposed to do
     private static String determineMax(List<String> strings) {
         //Initialise variables
         Map<String, Integer> map = new HashMap<String, Integer>();

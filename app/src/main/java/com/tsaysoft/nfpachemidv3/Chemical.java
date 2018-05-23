@@ -30,8 +30,8 @@ public class Chemical {
     private EnumMap<ChemSpecial, Boolean> specials = new EnumMap<>(ChemSpecial.class);
     private EnumMap<ChemID, String> ids = new EnumMap<>(ChemID.class);
 
-    // TODO: Update this with IDGManager once it becomes available
-    private static IDGAbstract idg = new FiehnIDG();
+    // TODO: Confirm that the IDGManager works correctly
+    private static IDGInterface idg = new IDGManager();
 
 
 

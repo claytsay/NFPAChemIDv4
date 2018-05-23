@@ -8,13 +8,16 @@ import java.util.EnumMap;
 /**
  * A class designed to help solve <code>Gson</code>'s problems with <code>EnumMap</code>s.
  * <p>
- *     Taken from StackOverFlow. See <code>@see</code> for the hyperlink.
+ *     However, it doesn't seem to work.
+ *     Taken from StackOverflow. See <code>@see</code> for the hyperlink.
  * </p>
  *
  * @see <a href="https://stackoverflow.com/questions/16127904/gson-fromjson-return-linkedhashmap-instead-of-enummap">StackOverFlow: GSON fromJson return LinkedHashMap instead of EnumMap</a>
  *
  * @author Perception
  * @version 00.02.00
+ * @deprecated Doesn't seem to work.
+ *
  */
 public class EnumMapInstanceCreator<K extends Enum<K>, V> implements
         InstanceCreator<EnumMap<K, V>> {

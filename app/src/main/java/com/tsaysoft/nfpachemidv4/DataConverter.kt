@@ -5,6 +5,7 @@ import com.tsaysoft.nfpachemidv3.ChemSpecial
 import java.util.*
 
 // TODO: Write "Kotlin-docs" for the DataConverter Kotlin class
+// TODO: Make sure that this class works
 // However, this class may be obsolete...
 class DataConverter {
 
@@ -32,17 +33,34 @@ class DataConverter {
         return result
     }
 
+    // TODO: Sumthin's up with dem fun[ctions]s here...
+    // "Devs plz fix"
     fun stringToProps(string: String): EnumMap<ChemProp,Int> {
-        // TODO: Finish this
-        /*val charSequence: CharSequence = string
-        var result: EnumMap<ChemProp, Int>
+        var result: EnumMap<ChemProp, Int> = EnumMap(ChemProp::class.java)
         var tempIndex: Int
+        var tempValue: Int
 
         for (item in ChemProp.values()) {
-            tempIndex = charSequence.find(    )
-            tempIndex = string.indexOf()
+            tempIndex = string.indexOf(item.toString())
+            tempValue = string.get(tempIndex+2).toInt()
+            result.put(item, tempValue)
         }
-        return null*/
+
+        return result
+    }
+
+    fun stringToSpecs(string: String): EnumMap<ChemSpecial,Boolean> {
+        var result: EnumMap<ChemSpecial, Boolean> = EnumMap(ChemSpecial::class.java)
+        var tempIndex: Int
+        var tempValue: Boolean
+
+        for (item in ChemSpecial.values()) {
+            tempIndex = string.indexOf(item.toString())
+            tempValue = string.substring(tempIndex + 2, tempIndex + 6).toBoolean()
+            result.put(item, tempValue)
+        }
+
+        return result
     }
 
 }

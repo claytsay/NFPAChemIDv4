@@ -84,4 +84,18 @@ public enum ChemSpecial {
 
         throw new RuntimeException("unable to convert ChemSpecial to String");
     }
+
+    // TODO: Determine if this is necessary, or if there is a better solution
+    public ChemSpecial fromString(String string) {
+        switch(string) {
+            case "OXIDIZER":
+                return OXIDIZER;
+            case "SIMPLE_ASPHYXIANT":
+                return SIMPLE_ASPHYXIANT;
+            case "WATER_REACT":
+                return WATER_REACT;
+        }
+
+        throw new RuntimeException("unable to convert ChemSpecial to String");
+    }
 }

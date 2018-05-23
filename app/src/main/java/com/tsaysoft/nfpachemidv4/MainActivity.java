@@ -37,12 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private EnumMap<ChemSpecial, Boolean> specials = new EnumMap<>(ChemSpecial.class);
     //private HashMap<String, Object> queryData;
 
-    public static final Gson gsonProps = new GsonBuilder().registerTypeAdapter(
-                new TypeToken<EnumMap<ChemProp, Integer>>() {}.getType(),
-                new EnumMapInstanceCreator<ChemProp, Integer>(ChemProp.class)).create();
-    public static final Gson gsonSpecs = new GsonBuilder().registerTypeAdapter(
-            new TypeToken<EnumMap<ChemSpecial, Boolean>>() {}.getType(),
-            new EnumMapInstanceCreator<ChemSpecial, Boolean>(ChemSpecial.class)).create();
+    public static final DataConverter DATA_CONVERTER = new DataConverter();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,33 +56,24 @@ public class MainActivity extends AppCompatActivity {
     public void onSubmit(View view) {
         // Collect data and get variables ready
         compileInput();
-        Chemical queryChemical = new Chemical(null, properties, specials);
-        //queryChemical.instantiateChemID(); // EXPERIMENTAL "PROCEDURE"
-
-        /*String resultsSerial = new Gson().toJson(queryChemical);
         Intent intent = new Intent(getBaseContext(), ResultsActivity.class);
-        intent.putExtra("QUERY", resultsSerial);
-        startActivity(intent);*/
 
-        /*queryData = new HashMap<>();
-        queryData.put("props", properties);
-        queryData.put("specs", specials);*/
+        // Convert data into "Intentable" forms
+        // TODO: See if this works
+        intent.putExtra("PROPERTIES", DATA_CONVERTER.propsToString(properties));
+        intent.putExtra("SPECIALS", DATA_CONVERTER.specsToString(specials));
 
-        /*String resultsSerial = new Gson().toJson(queryData);
-        Intent intent = new Intent(getBaseContext(), ResultsActivity.class);
-        intent.putExtra("QUERY", resultsSerial);
-        startActivity(intent);*/
+        startActivity(intent);
 
-        // Package the data using the specially-made Gsons
+        /*// Package the data using the specially-made Gsons
         String propsString = gsonProps.toJson(properties);
         String specsString = gsonSpecs.toJson(properties);
 
         // Finalize the Intent
-        Intent intent = new Intent(getBaseContext(), ResultsActivity.class);
         intent.putExtra("PROPERTIES", propsString);
         intent.putExtra("SPECIALS", specsString);
 
-        startActivity(intent);
+        startActivity(intent);*/
 
     }
 

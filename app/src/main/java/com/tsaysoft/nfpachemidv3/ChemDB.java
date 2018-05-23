@@ -148,13 +148,14 @@ public class ChemDB implements ChemDBInterface{
     // --------------------
 
     /**
-     * NON-FUNCTIONAL - Takes a CSV file and converts it into an <code>ArrayList</code> of <code>Chemical</code>s.
+     * <i><b>NON-FUNCTIONAL</b></i> - Takes a CSV file and converts it into an <code>ArrayList</code> of <code>Chemical</code>s.
      * <p>
      *     TODO: Fix this so that it works.
      *     Then again, does this really need to work?
      * </p>
      *
      * @param fileName the name of the CSV file to be read
+     * @deprecated This method doesn't work.
      */
     private void readCSV(String fileName) {
         // TODO: Fix this method: it cannot differentiate commas inside quotes and outside quotes.
