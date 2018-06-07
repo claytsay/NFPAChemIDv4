@@ -5,8 +5,11 @@ import com.tsaysoft.nfpachemidv3.ChemSpecial
 import java.util.*
 
 // TODO: Write "Kotlin-docs" for the DataConverter Kotlin class
-// TODO: Make sure that this class works
-// However, this class may be obsolete...
+/**
+ * This class was originally designed to convert an EnumMap into a String.
+ *
+ * @deprecated
+ */
 class DataConverter {
 
     fun propsToString(props: EnumMap<ChemProp, Int>): String {

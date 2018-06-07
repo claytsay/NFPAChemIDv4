@@ -231,7 +231,7 @@ public class ChemDB implements ChemDBInterface{
         String nameTemp = "";
         String specialTempString = "";
         String tempString;
-        String JSONString = "";
+        StringBuffer JSONSB = new StringBuffer("");
         EnumMap<ChemProp, Integer> propsTemp = new EnumMap<>(ChemProp.class);
         EnumMap<ChemSpecial, Boolean> specsTemp = new EnumMap<>(ChemSpecial.class);
         Chemical chemTemp;
@@ -240,15 +240,18 @@ public class ChemDB implements ChemDBInterface{
         try {
             // Read the file and convert it into a JSONArray.
             BufferedReader br = new BufferedReader(
-                    new InputStreamReader(context_master.getAssets().open(fileName)));
+                    new InputStreamReader(
+                            context_master.getAssets().open(fileName)
+                    )
+            );
             while ((tempString = br.readLine()) != null) {
-                JSONString = JSONString.concat(tempString);
+                JSONSB.append(tempString);
             }
-            chemJSONArray = new JSONArray(JSONString);
+            chemJSONArray = new JSONArray(JSONSB.toString());
 
 
             // Put fields into private instance variables.
-            for(int i = 0; i > chemJSONArray.length(); i++) {
+            for(int i = 0; i < chemJSONArray.length(); i++) {
                 Object obj = chemJSONArray.get(i);
 
                 try {
@@ -256,9 +259,9 @@ public class ChemDB implements ChemDBInterface{
 
                     // Convert the JSON information to processable information
                     nameTemp = chemJSONObject.get("NAME").toString();
-                    propsTemp.put(HEALTH, Integer.parseInt(chemJSONObject.get("HEALTH").toString()));
-                    propsTemp.put(FLAMMABILITY, Integer.parseInt(chemJSONObject.get("FLAMMABILITY").toString()));
-                    propsTemp.put(REACTIVITY, Integer.parseInt(chemJSONObject.get("REACTIVITY").toString()));
+                    for (ChemProp chemp : ChemProp.values()) {
+                        propsTemp.put(chemp, Integer.parseInt(chemJSONObject.get(chemp.toString()).toString()));
+                    }
                     specialTempString = chemJSONObject.get("SPECIAL").toString().toUpperCase();
 
                     // Access the special symbols string and put individual symbols into array spots
@@ -282,9 +285,7 @@ public class ChemDB implements ChemDBInterface{
                 }
             }
 
-        } catch (JSONException e) {
-            System.out.println(e + " - database could not be properly loaded");
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             System.out.println(e + " - database could not be properly loaded");
         }
 
@@ -302,9 +303,12 @@ public class ChemDB implements ChemDBInterface{
     private static EnumMap<ChemSpecial, Boolean> convertSpecialString(String specialString) {
         EnumMap<ChemSpecial, Boolean> results = new EnumMap<>(ChemSpecial.class);
 
-        results.put(OXIDIZER, specialString.contains("OX"));
+        for (ChemSpecial chemS : ChemSpecial.values()) {
+            results.put(chemS, specialString.contains(chemS.toString()));
+        }
+        /*results.put(OXIDIZER, specialString.contains("OX"));
         results.put(SIMPLE_ASPHYXIANT, specialString.contains("SA"));
-        results.put(WATER_REACT, specialString.contains("W"));
+        results.put(WATER_REACT, specialString.contains("W"));*/
 
         return results;
     }

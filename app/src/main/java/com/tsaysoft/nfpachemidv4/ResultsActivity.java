@@ -28,11 +28,11 @@ import static com.tsaysoft.nfpachemidv4.MainActivity.DATA_CONVERTER;
 
 public class ResultsActivity extends AppCompatActivity {
 
-    private HashMap<String, Object> queryData;
     private Chemical queryChem;
-    private Collection<Chemical> resultList;
-    private Chemical result;
     private ChemDBInterface database;
+
+    EnumMap<ChemProp,Integer> props;
+    EnumMap<ChemSpecial,Boolean> specs;
 
     private TextView resultTextView;
 
@@ -44,17 +44,28 @@ public class ResultsActivity extends AppCompatActivity {
         // Instantiation of instance variables, if necessary
         if (database == null) {
             String[] filenames =  {JSON_DATA_1, JSON_DATA_2};
-            database = new ChemDBManager(this, filenames);
+            //database = new ChemDBManager(this, filenames);
+            database = new ChemDB(this, JSON_DATA_1);
         }
         if (resultTextView == null) {
             resultTextView = findViewById(R.id.textView_results);
         }
+        if (props == null || specs == null) {
+            props = new EnumMap<>(ChemProp.class);
+            specs = new EnumMap<>(ChemSpecial.class);
+        }
 
         // Getting the query data
-        // TODO: Configure this after the MainActivity Intent sender is fixed
         Bundle bundle = getIntent().getExtras();
-        EnumMap<ChemProp,Integer> props = DATA_CONVERTER.stringToProps(bundle.getString("PROPERTIES"));
-        EnumMap<ChemSpecial,Boolean> specs = DATA_CONVERTER.stringToSpecs(bundle.getString("SPECIALS"));
+        for (ChemProp e : ChemProp.values()) {
+            props.put(e, (Integer)bundle.get(e.toString()));
+        }
+        for (ChemSpecial e : ChemSpecial.values()) {
+            Boolean temp = (Boolean)bundle.get(e.toString());
+            if (temp != null) {
+                specs.put(e, temp);
+            }
+        }
 
         queryChem = new Chemical(null, props, specs);
         queryDB(queryChem);

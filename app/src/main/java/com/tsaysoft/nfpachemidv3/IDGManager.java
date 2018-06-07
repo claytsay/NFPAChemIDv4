@@ -113,7 +113,7 @@ public class IDGManager implements IDGInterface{
     // PRIVATE UTILITY METHODS
     // --------------------
 
-    // TODO: Get this class working
+    // TODO: Get this method working
     // You might also want to figure out what it's supposed to do
     private static String determineMax(List<String> strings) {
         //Initialise variables

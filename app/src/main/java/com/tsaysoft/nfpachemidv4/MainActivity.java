@@ -58,22 +58,16 @@ public class MainActivity extends AppCompatActivity {
         compileInput();
         Intent intent = new Intent(getBaseContext(), ResultsActivity.class);
 
-        // Convert data into "Intentable" forms
-        // TODO: See if this works
-        intent.putExtra("PROPERTIES", DATA_CONVERTER.propsToString(properties));
-        intent.putExtra("SPECIALS", DATA_CONVERTER.specsToString(specials));
+        // Let's just go to the basics: perhaps that will be easiest.
+        for (ChemProp e : ChemProp.values()) {
+            intent.putExtra(e.toString(), properties.get(e));
+        }
+
+        for (ChemSpecial e : ChemSpecial.values()) {
+            intent.putExtra(e.toString(), specials.get(e));
+        }
 
         startActivity(intent);
-
-        /*// Package the data using the specially-made Gsons
-        String propsString = gsonProps.toJson(properties);
-        String specsString = gsonSpecs.toJson(properties);
-
-        // Finalize the Intent
-        intent.putExtra("PROPERTIES", propsString);
-        intent.putExtra("SPECIALS", specsString);
-
-        startActivity(intent);*/
 
     }
 
@@ -81,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
      * Instantiates <code>Spinner</code>s and <code>CheckBox</code>es.
      */
     private void initializeInput() {
-        spHealth = (Spinner)findViewById(R.id.spinner_health);
-        spFlammability = (Spinner)findViewById(R.id.spinner_flammability);
-        spReactivity = (Spinner)findViewById(R.id.spinner_reactivity);
+        spHealth        = (Spinner)findViewById(R.id.spinner_health);
+        spFlammability  = (Spinner)findViewById(R.id.spinner_flammability);
+        spReactivity    = (Spinner)findViewById(R.id.spinner_reactivity);
 
-        cbOX = (CheckBox)findViewById(R.id.checkBox_ox);
-        cbSA = (CheckBox) findViewById(R.id.checkBox_sa);
-        cbW = (CheckBox) findViewById(R.id.checkBox_w);
-
+        cbOX    =  (CheckBox)findViewById(R.id.checkBox_ox);
+        cbSA    =  (CheckBox)findViewById(R.id.checkBox_sa);
+        cbW     =  (CheckBox)findViewById(R.id.checkBox_w);
     }
 
     /**

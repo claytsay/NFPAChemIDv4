@@ -12,6 +12,11 @@ import static com.tsaysoft.nfpachemidv3.ChemProp.*;
  * <p>
  *     There's not much else to this. (>_<)
  * </p>
+ *
+ * @deprecated Ever since this project migrated to Android, this class has been obsolete.
+ *
+ * @author Clay Tsay
+ * @version 00.01.00
  */
 public class Main {
 
