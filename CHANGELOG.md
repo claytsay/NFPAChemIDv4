@@ -6,6 +6,12 @@ of the program and to document the changes involved with each new version.
 See [VERSION GUIDELINES.md](VERSION GUIDELINES.md) for version numbering guidelines.
 
 ## Log
+
+### 00.02.00
+- Almost updated the `NFPAChemIDv3` package to Kotlin.
+  - Still contain many compile-time errors
+  - Untested code
+
 ### 00.01.02
 - Fixed the `ChemDB` class:
   - It can now properly generate `chemList`s (i.e. the list of 

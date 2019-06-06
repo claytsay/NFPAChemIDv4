@@ -43,9 +43,9 @@ public class ResultsActivity extends AppCompatActivity {
 
         // Instantiation of instance variables, if necessary
         if (database == null) {
-            String[] filenames =  {JSON_DATA_1, JSON_DATA_2};
+            String[] filenames =  {Companion.getJSON_DATA_1(), Companion.getJSON_DATA_2()};
             //database = new ChemDBManager(this, filenames);
-            database = new ChemDB(this, JSON_DATA_1);
+            database = new ChemDB(this, Companion.getJSON_DATA_1());
         }
         if (resultTextView == null) {
             resultTextView = findViewById(R.id.textView_results);
